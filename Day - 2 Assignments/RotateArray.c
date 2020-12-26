@@ -1,36 +1,40 @@
 #include<stdio.h>
+
 int main()
 {
-    int a[5],temp=0,k=0;
+    int temp=0,k=0,n=0;
+    printf("Enter number of elements in the array :\n");
+    scanf("%d",&n);
+    int a[n];
     printf("Enter number of time to rotate the array 'k' :\n");
     scanf("%d",&k);
-    for(int i=0;i<5;i++)
+    for(int i=0;i<n;i++)
     {
-        printf("Enter element number %d\n",i);
         scanf("%d",&a[i]);
     }
-    int f=0;
-    int l=4;
-    if(k%2==1)
+    
+    printf("Before rotation of the array :\n");
+    for(int i=0;i<n;i++)
     {
-        while(f<l)
-        {
-            temp = a[f];
-            a[f]=a[l];
-            a[l]=temp;
-            f++;
-            l--;
-        }
-        for(int i=0;i<5;i++)
-        {
-            printf("%d",a[i]);
-        }
+        printf("%d ",a[i]);
     }
-    else
+    printf("\n");
+    
+    int j=0;
+    while(j!=k)
     {
-        for(int i=4;i>=0;i--)
+        temp = a[0];
+        for(int i=0;i<n-1;i++)
         {
-            printf("%d",a[i]);
+            a[i]=a[i+1];
         }
+        a[n-1]=temp;
+        j++;
+    }
+    
+    printf("After %d left rotations of the array :\n",k);
+    for(int i=0;i<n;i++)
+    {
+        printf("%d ",a[i]);
     }
 }
